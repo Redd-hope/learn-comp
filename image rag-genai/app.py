@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager  # Import ChromeDriverManager
 import google.generativeai as genai
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
@@ -61,8 +62,9 @@ def search_images_with_metadata(search_terms):
     options = Options()
     options.add_argument("--headless=new")
     options.add_argument("--disable-gpu")
-    service = Service("/usr/local/bin/chromedriver")  # Update with the correct path to your chromedriver
-    driver = webdriver.Chrome(service=service, options=options)
+    
+    # Use ChromeDriverManager to automatically manage the ChromeDriver
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     try:
         # Open Google Images
