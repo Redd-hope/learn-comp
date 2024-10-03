@@ -62,6 +62,9 @@ def search_images_with_metadata(search_terms):
     options = Options()
     options.add_argument("--headless=new")
     options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+
     
     # Use ChromeDriverManager to automatically manage the ChromeDriver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
