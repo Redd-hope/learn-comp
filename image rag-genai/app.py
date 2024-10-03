@@ -128,6 +128,4 @@ async def search_flowchart(user_query: UserQuery):
     
     return JSONResponse(content={"message": "Image search completed.", "search_terms": search_terms, "image_metadata": image_metadata})
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+
